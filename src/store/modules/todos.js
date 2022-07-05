@@ -6,7 +6,6 @@ const state = {
 
 const getters = {
     allTodos : (state) => state.todos
-    
 }
 
 const mutations = {
@@ -39,8 +38,14 @@ const actions = {
     },
 
     deleteTodo({ commit }, id) {
-        console.log("Sil ulan", id)
         commit('removeTodo', id)
+    },
+
+    filterTodos({ commit }, e) {
+        axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${e.target.value}`)
+            .then(res => {
+                commit('setTodos', res.data)
+            })
     }
 }
 

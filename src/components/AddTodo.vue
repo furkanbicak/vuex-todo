@@ -17,12 +17,12 @@ export default {
             title: ''
         }
     },
+    
     methods : {
         ...mapActions(["addTodo"]),
 
         onSubmit(e){
             e.preventDefault()
-            console.log(this.title)
             this.addTodo(this.title)
         }
     }
